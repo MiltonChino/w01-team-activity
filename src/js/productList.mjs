@@ -5,6 +5,7 @@ import { renderListWithTemplate } from "./utils.mjs";
 export default async function productList(selector, category) {
   // get the element we will insert the list into from the selector
   const element = document.querySelector(selector);
+
   // get the list of products
   const products = await getData(category);
 
