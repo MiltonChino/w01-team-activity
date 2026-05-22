@@ -43,3 +43,43 @@ export function renderListWithTemplate(
   const htmlString = list.map(templateFn);
   parentElement.insertAdjacentHTML(position, htmlString.join(""));
 }
+
+export async function renderWithTemplate(
+  templateFn,
+  parentElement,
+  data,
+  callback,
+  position = "afterbegin",
+  clear = true,
+) {
+  if (clear) {
+    parentElement.innerHTML = "";
+  }
+  const htmlString = await templateFn(data);
+  parentElement.insertAdjacentHTML(position, htmlString);
+  if (callback) {
+    callback(data);
+  }
+}
+
+export function loadTemplate(path) {
+  // this is called currying
+  return async function () {
+    const response = await fetch(path);
+    if (response.ok) {
+      const html = await response.text();
+      return html;
+    }
+  };
+}
+
+export async function loadHeaderFooter() {
+  const headerTemplateFn = loadTemplate("/partials/header.html");
+  const footerTemplateFn = loadTemplate("/partials/footer.html");
+  //Grab the header and footer elements out of the DOM
+  const headerElement = qs("#main-header");
+  const footerElement = qs("#main-footer");
+  //Render the header and footer (renderWithTemplate)
+  await renderWithTemplate(headerTemplateFn, headerElement);
+  await renderWithTemplate(footerTemplateFn, footerElement);
+}
