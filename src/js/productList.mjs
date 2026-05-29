@@ -1,7 +1,6 @@
 import { getData } from "./productData.mjs";
 import { renderListWithTemplate } from "./utils.mjs";
 // Begin creating your productList function by thinking about the information it will need to accomplish it's purpose.
-
 export default async function productList(selector, category) {
   // get the element we will insert the list into from the selector
   const element = document.querySelector(selector);
@@ -9,13 +8,15 @@ export default async function productList(selector, category) {
   // get the list of products
   const products = await getData(category);
 
+  // Need to create function to handle the images promise
+
   // render out the product list to the element
-  renderListWithTemplate(productCardTemplate, element, products, "beforeend");
+   renderListWithTemplate(productCardTemplate, element, products, "beforeend");
 }
 
 function productCardTemplate(product) {
   return `<li class="product-card">
-    <a href="product_pages/index.html?product=${product.Id}">
+    <a href="/product_pages/index.html?product=${product.Id}">
     <img
       src="${product.Image}"
       alt="Image of ${product.Name}"
