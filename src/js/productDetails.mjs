@@ -19,12 +19,19 @@ function addToCart() {
 }
 
 function renderProductDetails() {
-  document.querySelector("#productName").innerText = product.Brand.Name;
-  document.querySelector("#productNameWithoutBrand").innerText = product.NameWithoutBrand;
-  document.querySelector("#productImage").src = product.Image;
-  document.querySelector("#productImage").alt = product.Name;
-  document.querySelector("#productFinalPrice").innerText = product.FinalPrice;
-  document.querySelector("#productColorName").innerText = product.Colors[0].ColorName;
-  document.querySelector("#productDescriptionHtmlSimple").innerHTML = product.DescriptionHtmlSimple;
+  const imageUrl = product.Images?.PrimaryLarge;
+  const colorName = product.Colors?.[0]?.ColorName || "";
+  const price = product.FinalPrice ?? product.Price ?? "";
+  const brandName = product.Brand?.Name || "";
+
+  document.querySelector("#productName").innerText = brandName;
+  document.querySelector("#productNameWithoutBrand").innerText =
+    product.NameWithoutBrand || product.Name || "";
+  document.querySelector("#productImage").src = imageUrl;
+  document.querySelector("#productImage").alt = product.Name || "Product image";
+  document.querySelector("#productFinalPrice").innerText = price;
+  document.querySelector("#productColorName").innerText = colorName;
+  document.querySelector("#productDescriptionHtmlSimple").innerHTML =
+    product.DescriptionHtmlSimple || "";
   document.querySelector("#addToCart").dataset.id = product.Id;
 }
