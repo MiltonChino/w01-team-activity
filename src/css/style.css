@@ -112,6 +112,14 @@ button {
 
 /* End cart icon styles */
 
+.hide {
+  display: none;
+}
+
+.cart-footer a {
+  text-decoration: none;
+}
+
 /* product grid styles */
 .product-grid {
   list-style-type: none;
