@@ -4,6 +4,20 @@ export default function shoppingCart() {
   const cartList = document.querySelector(".product-list");
   const cartItems = getLocalStorage("so-cart") || [];
   renderListWithTemplate(cartItemTemplate, cartList, cartItems);
+
+
+  // .cart footer control, check solution
+  if (cartItems.length > 0) {
+    const cartFooter = document.querySelector(".cart-footer");
+    if (cartFooter) {
+      cartFooter.classList.remove("hide");
+      const total = cartItems.reduce((sum, item) => sum + (item.FinalPrice || item.price || 0), 0);
+      const cartTotal = document.querySelector(".cart-total");
+      if (cartTotal) {
+        cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+      }
+    }
+  }
 }
 
 function cartItemTemplate(product) {
