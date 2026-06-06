@@ -20,7 +20,7 @@
         <h2>Review & Place your Order</h2>
         <!-- build a form -->
 
-        <form action="/submit" method="POST">
+        <form action="/submit" method="POST" name="checkout">
           <!-- Section 1: Shipping -->
           <section id="contact-info">
             <fieldset>
@@ -52,21 +52,44 @@
                 <label for="expiration">Expiration</label>
                 <input type="text" id="expiration" name="expiration" required />
                 <label for="code">Security Code</label>
-                <input type="text" id="code" name="code" required />
+                <input
+                  type="password"
+                  id="code"
+                  name="code"
+                  placeholder="•••"
+                  maxlength="4"
+                  pattern="\d{3,4}"
+                  required
+                />
               </div>
             </fieldset>
           </section>
 
           <!-- Section 3: Order Summary -->
           <section id="order-summary">
-            <fieldset>
+            <fieldset class="checkout-summary">
               <legend>Order Summary</legend>
-              <div class="form-group">
-                <label id="subtotal">Item Subtotal</label>
-                <label id="shipping">Shipping Estimate</label>
-                <label for="tax">Tax</label>
-                <label id="total">Order Total</label>
-              </div>
+
+              <ul>
+                <li>
+                  <label for="cartTotal"
+                    >Item Subtotal(<span id="num-items"></span>)</label
+                  >
+                  <p name="cartTotal" id="cartTotal"></p>
+                </li>
+                <li>
+                  <label for="shipping">Shipping Estimate</label>
+                  <p id="shipping"></p>
+                </li>
+                <li>
+                  <label for="tax">Tax</label>
+                  <p id="tax"></p>
+                </li>
+                <li>
+                  <label for="orderTotal">Order Total</label>
+                  <p id="orderTotal"></p>
+                </li>
+              </ul>
             </fieldset>
           </section>
 

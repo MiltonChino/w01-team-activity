@@ -3,6 +3,7 @@ import { getLocalStorage, renderListWithTemplate } from "./utils.mjs";
 export default function shoppingCart() {
   const cartList = document.querySelector(".product-list");
   const cartItems = getLocalStorage("so-cart") || [];
+
   renderListWithTemplate(cartItemTemplate, cartList, cartItems);
   // Show the cart footer if there are items in the cart
   const cartFooter = document.querySelector(".cart-footer");
@@ -21,7 +22,7 @@ export default function shoppingCart() {
 function cartItemTemplate(product) {
   const newItem = `<li class="cart-card divider">
     <a href="#" class="cart-card__image">
-      <img src="${product.Image}" alt="${product.Name}"
+      <img src="${product.Images.PrimarySmall}" alt="${product.Name}"
       />
     </a>
     <a href="#">
