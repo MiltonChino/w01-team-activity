@@ -18,6 +18,85 @@
     <main class="divider">
       <section class="products">
         <h2>Review & Place your Order</h2>
+        <!-- build a form -->
+
+        <form action="/submit" method="POST" name="checkout">
+          <!-- Section 1: Shipping -->
+          <section id="contact-info">
+            <fieldset>
+              <legend>Shipping</legend>
+              <div class="form-group">
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" name="fname" required />
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" name="lname" required />
+                <label for="street">Street:</label>
+                <input type="text" id="street" name="street" required />
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" required />
+                <label for="state">State:</label>
+                <input type="text" id="state" name="state" required />
+                <label for="zip">ZIP Code:</label>
+                <input type="text" id="zip" name="zip" required />
+              </div>
+            </fieldset>
+          </section>
+
+          <!-- Section 2: Payment -->
+          <section id="payment-info">
+            <fieldset>
+              <legend>Payment</legend>
+              <div class="form-group">
+                <label for="cardNumber">Card number</label>
+                <input type="text" id="cardNumber" name="cardNumber" required />
+                <label for="expiration">Expiration</label>
+                <input type="text" id="expiration" name="expiration" required />
+                <label for="code">Security Code</label>
+                <input
+                  type="password"
+                  id="code"
+                  name="code"
+                  placeholder="•••"
+                  maxlength="4"
+                  pattern="\d{3,4}"
+                  required
+                />
+              </div>
+            </fieldset>
+          </section>
+
+          <!-- Section 3: Order Summary -->
+          <section id="order-summary">
+            <fieldset class="checkout-summary">
+              <legend>Order Summary</legend>
+
+              <ul>
+                <li>
+                  <label for="cartTotal"
+                    >Item Subtotal(<span id="num-items"></span>)</label
+                  >
+                  <p name="cartTotal" id="cartTotal"></p>
+                </li>
+                <li>
+                  <label for="shipping">Shipping Estimate</label>
+                  <p id="shipping"></p>
+                </li>
+                <li>
+                  <label for="tax">Tax</label>
+                  <p id="tax"></p>
+                </li>
+                <li>
+                  <label for="orderTotal">Order Total</label>
+                  <p id="orderTotal"></p>
+                </li>
+              </ul>
+            </fieldset>
+          </section>
+
+          <div class="submit-button-container">
+            <button type="submit">Submit Form</button>
+          </div>
+        </form>
       </section>
     </main>
 

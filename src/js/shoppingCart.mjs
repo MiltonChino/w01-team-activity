@@ -3,13 +3,26 @@ import { getLocalStorage, renderListWithTemplate } from "./utils.mjs";
 export default function shoppingCart() {
   const cartList = document.querySelector(".product-list");
   const cartItems = getLocalStorage("so-cart") || [];
+
   renderListWithTemplate(cartItemTemplate, cartList, cartItems);
+  // Show the cart footer if there are items in the cart
+  const cartFooter = document.querySelector(".cart-footer");
+  if (cartItems.length > 0) {
+    // Calculate total price
+    const totalPrice = cartItems.reduce(
+      (total, item) => total + item.FinalPrice,
+      0,
+    );
+    const totalElement = cartFooter.querySelector(".cart-total");
+    totalElement.textContent = `Total: $${totalPrice.toFixed(2)}`;
+    cartFooter.classList.remove("hide");
+  }
 }
 
 function cartItemTemplate(product) {
   const newItem = `<li class="cart-card divider">
     <a href="#" class="cart-card__image">
-      <img src="${product.Image}" alt="${product.Name}"
+      <img src="${product.Images.PrimarySmall}" alt="${product.Name}"
       />
     </a>
     <a href="#">
