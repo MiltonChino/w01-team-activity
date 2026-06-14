@@ -399,3 +399,29 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+
+/* Alert styles */
+.alert {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--primary-color);
+  border: 1px solid #d08030;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  color: var(--dark-grey);
+}
+
+.alert p {
+  margin: 0;
+}
+
+.alert .close-btn {
+  cursor: pointer;
+  padding-left: 10px;
+  user-select: none;
+}
+
+.alert + .alert {
+  margin-top: -16px;
+}

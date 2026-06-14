@@ -48,12 +48,29 @@
               <legend>Payment</legend>
               <div class="form-group">
                 <label for="cardNumber">Card number</label>
-                <input type="text" id="cardNumber" name="cardNumber" required />
+                <input
+                  type="text"
+                  id="cardNumber"
+                  name="cardNumber"
+                  required
+                  minlength="16"
+                  maxlength="16"
+                  pattern="^\d{16}"
+                />
                 <label for="expiration">Expiration</label>
-                <input type="text" id="expiration" name="expiration" required />
+                <input
+                  type="text"
+                  id="expiration"
+                  name="expiration"
+                  required
+                  minlength="5"
+                  maxlength="5"
+                  pattern="\d{2}/\d{2}"
+                  placeholder="MM/YY"
+                />
                 <label for="code">Security Code</label>
                 <input
-                  type="password"
+                  type="text"
                   id="code"
                   name="code"
                   placeholder="•••"

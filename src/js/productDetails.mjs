@@ -1,4 +1,4 @@
-import { setLocalStorage, getLocalStorage } from "./utils.mjs";
+import { setLocalStorage, getLocalStorage, alertMessage } from "./utils.mjs";
 import { findProductById } from "./externalServices.mjs";
 
 let product = {};
@@ -16,6 +16,7 @@ function addToCart() {
   let cart = getLocalStorage("so-cart") || [];
   cart.push(product);
   setLocalStorage("so-cart", cart);
+  alertMessage("Product added to cart");
 }
 
 function renderProductDetails() {
