@@ -45,18 +45,17 @@ export async function loginRequest(user) {
     body: JSON.stringify(user),
   };
   const response = await fetch(baseURL + "login", options).then(convertToJson);
-  //console.log("login response", response["accessToken"]);
   return response.accessToken;
 }
 
 export async function getOrders(token) {
-  //console.log("getting orders with token", token);
   const options = {
     method: "GET",
+    // the server will reject our request if we don't include the Authorization header with a valid token!
     headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token.trim()}`,
     },
   };
-  return await fetch(baseURL + "orders", options).then(convertToJson);
+  const response = await fetch(baseURL + "orders", options).then(convertToJson);
+  return response;
 }

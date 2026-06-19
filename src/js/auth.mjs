@@ -6,9 +6,7 @@ const tokenKey = "so-token";
 export async function login(creds, redirect = "/") {
   try {
     const token = await loginRequest(creds);
-    //console.log("token from login request", token);
     setLocalStorage(tokenKey, token);
-    //console.log("redirecting to ", redirect);
     // because of the default arg provided above...if no redirect is provided send them Home.
     window.location = redirect;
   } catch (err) {

@@ -29,6 +29,7 @@ export default class Admin {
   }
   async showOrders() {
     try {
+      console.log("showing orders with token", this.token);
       const orders = await getOrders(this.token);
       this.mainElement.innerHTML = orderTemplate();
       const parent = document.querySelector("#orders tbody");
