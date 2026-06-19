@@ -381,6 +381,43 @@ form[name="checkout"] button[type="submit"]:hover {
   }
 }
 
+/* FORM login*/
+form[name="login"] label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: -0.3rem;
+}
+
+form[name="login"] input {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+form[name="login"] input:focus {
+  outline: none;
+  border-color: #3066be; /* Azul de enfoque */
+}
+
+form[name="login"] button[type="submit"] {
+  background-color: #ff9f1c; /* Naranja llamativo tipo e-commerce */
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.2s;
+  margin-top: 1rem;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;

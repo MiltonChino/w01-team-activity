@@ -6,7 +6,7 @@ async function convertToJson(res) {
   if (res.ok) {
     return jsonResponse;
   } else {
-    throw { name: 'servicesError', message: jsonResponse };
+    throw { name: "servicesError", message: jsonResponse };
   }
 }
 
@@ -34,4 +34,29 @@ export async function checkout(payload) {
     body: JSON.stringify(payload),
   };
   return await fetch(baseURL + "checkout", options).then(convertToJson);
+}
+
+export async function loginRequest(user) {
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(user),
+  };
+  const response = await fetch(baseURL + "login", options).then(convertToJson);
+  //console.log("login response", response["accessToken"]);
+  return response.accessToken;
+}
+
+export async function getOrders(token) {
+  //console.log("getting orders with token", token);
+  const options = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  return await fetch(baseURL + "orders", options).then(convertToJson);
 }
