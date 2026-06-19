@@ -1,4 +1,4 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, alertMessage } from "./utils.mjs";
 import { checkout } from "./externalServices.mjs";
 
 function formDataToJSON(formElement) {
@@ -104,10 +104,13 @@ const checkoutProcess = {
       this.list = [];
       this.calculateItemSummary();
       this.displayOrderTotals();
-      alert("Checkout successful! Thank you for your purchase.");
+      // Redirect to the success page
+      window.location.href = "success.html";
     } catch (error) {
       console.error("Checkout failed:", error);
-      alert("Checkout failed. Please try again.");
+      for (let message in error.message) {
+        alertMessage(`Checkout failed. Please try again: ${JSON.stringify(error.message[message])}`, true, 5000);
+      }
     }
   },
 };
