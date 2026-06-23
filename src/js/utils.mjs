@@ -11,6 +11,7 @@ export function getLocalStorage(key) {
 }
 // save data to local storage
 export function setLocalStorage(key, data) {
+  //console.log("setting local storage ", key, data);
   localStorage.setItem(key, JSON.stringify(data));
 }
 // set a listener for both touchend and click
@@ -84,28 +85,24 @@ export async function loadHeaderFooter() {
   await renderWithTemplate(footerTemplateFn, footerElement);
 }
 
-
 export function alertMessage(message, scroll = true, duration = 5000) {
   // create element to hold our alert
-  const alert = document.createElement('div');
+  const alert = document.createElement("div");
   // add a class to style the alert
-  alert.classList.add('alert');
+  alert.classList.add("alert");
   // set the contents. You should have a message and an X or something the user can click on to remove
   alert.innerHTML = `<p>${message}</p><span class="close-btn">X</span>`;
   // add a listener to the alert to see if they clicked on the X
   // if they did then remove the child
-  alert.addEventListener('click', function(e) {
-      if(e.target.tagName === 'SPAN') {
-        main.removeChild(this);
-      }
-  })
+  alert.addEventListener("click", function (e) {
+    if (e.target.tagName === "SPAN") {
+      main.removeChild(this);
+    }
+  });
   // add the alert to the top of main
-  const main = document.querySelector('main');
+  const main = document.querySelector("main");
   main.prepend(alert);
   // make sure they see the alert by scrolling to the top of the window
   //we may not always want to do this...so default to scroll=true, but allow it to be passed in and overridden.
-  if(scroll)
-    window.scrollTo(0,0);
-
+  if (scroll) window.scrollTo(0, 0);
 }
-     
